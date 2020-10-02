@@ -3,11 +3,13 @@ const axios = require('axios');
 const rateLimit = require('express-rate-limit');
 const slowDown = require('express-slow-down');
 
+
 const limiter = rateLimit({
   windowMs: 30 * 1000, //reset rate limit after 30 secs
   max: 10, // throw too many reqests error after 10 api hits with in the 30 sec window
 });
 
+//loads the page slower every time by 500 ms
 const speedLimiter = slowDown({
   windowMs: 30 * 1000, //reset after slowdown after 30 secs
   delayAfter: 1,
